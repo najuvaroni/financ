@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Principal</title>
+</head>
+<body>
+  <header>
+    <div>
+        <div class="headerprincipal">
+            <button class="card">
+                <h4 class="despesa">Despesas</h4>
+                <h3 class="valordespesa">R$00,00</h3>
+            </button>
+
+           <button class="card">
+                <h4 class="receita">Receitas</h4>
+                <h3 class="valorreceita">R$00,00</h3>
+            </button>
+
+            <a href="http://127.0.0.1:5000/principal">
+                <button class="card">
+                    <span class="relatorioh4">Relatórios</span>
+                </button>
+            </a>
+             <div>
+            <h3 class="acesso">Acesso rápido</h3>
+             <a href='http://127.0.0.1:5000/receita'>
+                  <button class="bttimgreceita"> <img class="imgreceitabtt" src="../static/bttreceita.JPG"></button>
+                </a>
+             <a href="http://127.0.0.1:5000/despesa">
+                 <button class="bttimgreceita"><img class="imgreceitabt" src="../static/bttdespesas.JPG"></button>
+                </a>
+        </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="SaldoEimg">
+
+    <div class="imgPrincipal">
+        <img  src="../static/logo.png">
+    </div>
+    <div class="divSaldoGeral">
+       <div class="divpaiReceitas">
+        <div class="inputReceitas">
+            <input id="receitaInput" class="inputRec" type="text" name="name" placeholder="Adicione a Receita:">
+            <input id="valorInput" class="inputRec" type="text" name="name" placeholder="Valor: ">
+        </div>
+        <div >
+            <button id="adicionarBtn" class="bttRec">Adicionar</button>
+        </div>
+       </div>
+       <img class="LinhaCard" src="../static/linha.png">
+       <div id="resultado"></div> <!-- Aqui será exibido o resultado -->
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("adicionarBtn").addEventListener("click", function() {
+        // Obter os valores dos inputs
+        var receita = document.getElementById("receitaInput").value;
+        var valor = document.getElementById("valorInput").value;
+
+        // Exibir os valores abaixo dos inputs
+        var resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.innerHTML = "<p>Receita: " + receita + ", Valor: " + valor + "</p>";
+    });
+     document.getElementById("adicionarBtn").addEventListener("click", function() {
+        var receita = document.getElementById("receitaInput").value;
+        var valor = parseFloat(document.getElementById("valorInput").value);
+
+        // Exibir os valores abaixo dos inputs
+        var resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.innerHTML = "<p>Receita: " + receita + ", Valor: " + valor.toFixed(2) + "</p>";
+
+        // Adicionar o valor da receita ao total no localStorage
+        var totalReceita = localStorage.getItem("totalReceita");
+        if (!totalReceita) {
+            totalReceita = 0;
+        }
+        totalReceita = parseFloat(totalReceita);
+        totalReceita += valor;
+        localStorage.setItem("totalReceita", totalReceita.toFixed(2));
+    });
+
+</script>
+
+</body>
+</html>

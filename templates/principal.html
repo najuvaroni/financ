@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Principal</title>
+</head>
+<body>
+    <header >
+        <div>
+            <div class="headerprincipal">
+                <button class="card">
+                    <h4 class="despesa">Despesas</h4>
+                    <h3 class="valordespesa">R$00,00</h3>
+                </button>
+
+               <button class="card">
+                    <h4 class="receita">Receitas</h4>
+                    <h3 class="valorreceita">R$ <span id="totalReceita">  </span></h3>
+                </button>
+
+                <button class="card">
+                   <span class="relatorioh4">Relatórios</span>
+                </button>
+                 <div>
+                <h3 class="acesso">Acesso rápido</h3>
+                 <a href='http://127.0.0.1:5000/receita'>
+                      <button class="bttimgreceita"> <img class="imgreceitabtt" src="../static/bttreceita.JPG"></button>
+                    </a>
+                 <a href="http://127.0.0.1:5000/despesa">
+                     <button class="bttimgreceita"><img class="imgreceitabt" src="../static/bttdespesas.JPG"></button>
+                    </a>
+            </div>
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <div class="SaldoEimg">
+        <div class="divSaldoGeral">
+            <h2>Saldo Geral</h2>
+            <h2>R$ <span class="saldo"><b>00,00</b></span></h2>
+            <button class="bttOlho"><img src="../static/olho.png"></button>
+
+        </div>
+
+        <div class="imgPrincipal">
+            <img  src="../static/img-p.png">
+        </div>
+    </div>
+ <script>
+        // Recuperar o total da receita do localStorage e exibi-lo na tela principal
+        var totalReceita = localStorage.getItem("totalReceita");
+        if (totalReceita) {
+            document.getElementById("totalReceita").textContent = totalReceita;
+        }
+    </script>
+</body>
+</html>
